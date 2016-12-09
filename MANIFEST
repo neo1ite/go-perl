@@ -1,0 +1,10 @@
+gotest.pm
+add.go
+sub.go
+gotest.xs
+Makefile.PL
+MANIFEST
+t/01load.t
+t/02add.t
+t/03sub.t
+t/04both.t
