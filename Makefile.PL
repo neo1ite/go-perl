@@ -28,7 +28,7 @@ libadd.h: add.go \$(INST_ARCHAUTODIR)${path_sep}libadd$lib_ext
 # This has to be built locally because it does generate libadd.h
 # -x -ldflags=-v
 	go build -buildmode="c-shared" -o libadd$lib_ext add.go
-	\$(MV) libadd$lib_ext \$(INST_ARCHAUTODIR)/libadd$lib_ext
+	\$(MV) libadd$lib_ext \$(INST_ARCHAUTODIR)${path_sep}libadd$lib_ext
 
 libsub$lib_ext: libsub.h
 
