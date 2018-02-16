@@ -11,17 +11,18 @@ our $VERSION = '0.01';
   use File::Basename;
   use DynaLoader;
   my (undef, $dir) = fileparse(__FILE__);
+  my $lib_ext  = ($^O =~ /MSWin32/) ? '.dll' : '.so';
   my @reldirs = qw(../arch/auto auto);
-  my @libs = qw(libadd.so libsub.so);
+  my @libs = qw(libadd libsub);
   for my $libname (@libs) {
     my $lib;
     for my $reldir (@reldirs) {
-      my $libpath = "$dir/" . $reldir . "/" . __PACKAGE__ . "/$libname";
+      my $libpath = "$dir/" . $reldir . "/" . __PACKAGE__ . "/$libname$lib_ext";
       # The '1' is necessary to make the symbols visible to the upcoming load
       $lib = DynaLoader::dl_load_file($libpath, 1);
       last if $lib;
     }
-    die "Couldn't load generated Go library $libname" unless defined $lib;
+    die "Couldn't load generated Go library $libname$lib_ext" unless defined $lib;
   }
 }
 

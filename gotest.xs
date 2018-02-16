@@ -3,6 +3,7 @@
 #include "XSUB.h"
 
 #include "libadd.h"
+#include "libsub.h"
 
 MODULE = gotest               PACKAGE = gotest
 
